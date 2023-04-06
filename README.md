@@ -1,5 +1,100 @@
 # 김진원
 
+## 내용 정리(23.04.06)
+
+## 행과 열의 이름붙이기
+1. rownames() : 행의 이름을 붙이거나 행의 이름을 출력할 때 이용한다. 
+2. colnames() : 열의 이름을 붙이거나 열의 이름을 출력할 때 이용한다. ex) colnames(score) <- c('김', '진', '원')
+3. 한글도 가능하다.
+4. 배열이름[행, 열]을 입력하여 특정 값을 찾을 수 있다. ex) score['jinwon', 'math']
+5. 배열이름[행,]을 입력하면 특정 행의 값만 찾을 수 있다.
+6. 배열이름[,열]을 입력하면 특정 열의 값만 찾을 수 있다.
+
+## 데이터프레임
+매트릭스와 마찬가지로 2차원 형태이다.
+
+실습)  
+> city <- c("seoul", 'tokyo', 'washington')  
+> rank <- c(1,2,3)  
+> city.info <- data.frame(city, rank)  
+> city.info  
+
+## iris
+150그루의 붓꽃에 대해 4개 분야의 측정 데이터와 품종 정보를 결합하여 만든 데이터 셋이다.  
+실습)  
+> iris[, c(1:2)] # 1~2열의 모든 데이터
+> iris[1:5, c(1,3)] # 1~5행의 데이터 중 1, 3열의 데이터  
+> dim[iris] # 행과 열의 개수 보이기
+> colnames(iris) # 열 이름 보이기, names() 함수와 동일  
+> nrow(iris) # 행의 개수 보이기  
+> head(iris) # 데이터셋의 앞부분 일부 보기  
+> tail(iris) # 데이터셋의 뒷부분 일부 보기  
+> str(iris) # 데이터셋 요약 정보 보기  
+> iris[,5] # 품종 데이터 보기  
+> table(iris[,"Species"]) # 품종의 종류별 행의 개수 세기  
+> colSums(iris[, -5]) # 열별 합계 S대문자!  
+> colMeans(iris[, -5]) # 열별 평균  
+
+## 행과 열의 방향 변환하기
+ex) z <- matrix(1:20, nrow=4, ncol=5)  
+
+## 조건에 맞는 행과 열의 값 추출하기
+subset() 함수 매개변수  
+ex)   
+> IR.1 <- subset(iris, Species=='setosa')  
+> IR.1  
+> IR.2 <- subset(iris, Sepal.Length>5.0 & Sepal.Width>4.0)  
+> IR.2  
+
+## 매트릭스와 데이터프레임에 함수 적용
+매트릭스와 데이터프레임에 산술연산 적용하기  
+실습)  
+> a <- matrix(1:20, 4, 5)  
+> b <- matrix(21:40, 4, 5)  
+> a  
+> b  
+> 2*a  # 매트릭스 a에 저장된 값들에 2를 곱하기  
+> a+b  
+> a <- a*3  
+> b <- b-5  
+
+## 매트릭스와 데이터프레임의 자료구조 확인과 변환
+실습)  
+> class(iris) # iris데이터셋의 자료구조 확인  
+> class(state.x77) # state.x77 데이터셋의 자료구조 확인  
+> is.matrix(iris) # 데이터셋이 매트릭스인지 확인하는 함수  
+> is.data.frame(iris) # 데이터셋이 데이터프레임인지 확인하는 함수  
+매트릭스를 데이터프레임으로 변환  
+실습)  
+> is.matrix(state.x77)  
+> st <- data.frame(state.x77)  
+> head(st)  
+> class(st)  
+데이터프레임을 매트릭스로 변환  
+> is.data.frame(iris[,1:4])  
+> iris.m <- as.matrix(iris[,1:4])  
+> head(iris.m)  
+> class(iris.m)  
+
+## 데이터의 입력과 출력은 어떻게 하는 것일까
+실습)  
+> age <- c(20, 21, 22, 23, 24, 25) # 데이터 입력   
+> age  
+> young <- min(age) # 가장 작은 값 정보 추출  
+> old <- max(age) # 가장 큰 값 정보 추출  
+> cat('가장 젊은 사람의 나이는 ', young, '이고, ', '가장 나이든 사람의 나이는', old, '입니다. \n') # 처리 결과 출력  
+
+## 데이터를 출력해주는 함수
+1. print() 
+2. cat()
+
+## 파일을 이용해 데이터를 읽고 쓰는 방법
+1. getwd() - 현재 작업 폴더 알아내기
+2. setwd('변경할 파일 주소') - 작업 폴더 변경하기 
+3. air <- read.csv('파일 이름') # 파일 읽기
+
+---
+
 ## 내용 정리(23.03.30)
 
 ## 저장된 값을 보여주고 지우는 함수
