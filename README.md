@@ -1,5 +1,53 @@
 # 김진원
 
+## 내용 정리(23.04.13)
+
+## 파일 입출력에서 알아야 할 내용
+1. setwd('폴더 주소') # 작업 폴더 지정
+2. getwd() ## 현재 주소 출력
+3. print('hello) # 화면으로 출력
+4. sink('result.txt', append=1) # 파일로 출력 시작
+5. sink( ) # 파일로 출력 정지
+6. sink('result.txt', append=T) # True로 할시 이어서 입력해주고 append=F로 할 시 초기화를 하고 입력한다.
+
+## 조건문 if-else문
+조건문 : 조건에 따라 실행할 명령문  
+if( 조건 )  
+ 참일 경우 실행되는 명령문  
+else  
+ 거짓일 경우 실행되는 명령문  
+
+## ifelse문
+ifelse(a>b, a, b)  
+ifelse(조건, 참, 거짓)  
+
+## 반복문 for문
+for(반복 변수 in 반복 범위)  
+{  
+    반복할 명령문(틀)  
+}  
+예시 코드  
+for(i in 1:5){  
+    print('*')  
+}  
+
+## apply() 계열 함수
+apply(iris[,1:4], 1, mean) # 행 방향으로 함수 적용  
+apply(iris[,1:4], 2, mean) # 열 방향으로 함수 적용  
+
+## 사용자 정의 함수
+mymax <- function(x,y) {  
+ num.max <- x  
+ if(y>x){  
+    num.max <- y    
+ }  
+ return(num.max)  
+}  
+
+
+
+---
+
 ## 내용 정리(23.04.06)
 
 ## 행과 열의 이름붙이기
