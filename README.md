@@ -1,5 +1,61 @@
 # 김진원
 
+## 내용 정리(23.04.27)
+
+## 시험 관련은 체점이 완료되는 주에 문제풀이 및 확인!!
+
+## 막대그래프
+- 데이터가 포함하고 있는 정보를 이해하기 쉽게 표현하는 과정을 데이터 시각화 라고 한다.
+- 막대그래프는 그룹별로 집계된 데이터를 표현하는 도구이기 때문에 막대그래프를 작성하기 위해서는 먼저 그룹별로 데이터를 집계하는 작업이 필요하다.
+- ex)
+- favorite <- c('Winter', 'Summer', 'Sprring', 'Summer', 'Summer', 'fail', 'fail', 'Summer', 'Spring', 'Summer', 'Summer')  
+table(favorite)  
+ds <- table(favorite)  
+barplot(ds, main = 'Favorite Season', col = c('skyblue', 'azure2', 'gold', 'gray'), xlab='계절', ylab='빈도 수', horiz=TRUE)  
+- las값에 따른 출력 방향 0 ~ 3
+
+## 중첩 그룹의 막대그래프
+- ex)
+- age.A <- c(13709, 10974, 7979, 5000, 4250)  
+age.B <- c(17540, 29701, 36209, 33947, 24487)  
+age.C <- c(991, 2195, 5366, 12980, 19007)  
+ds2 <- rbind(age.A, age.B, age.C)  
+colnames(ds2) <- c('1970', '1980', '1990', '2000', '2010')  
+ds2  
+barplot(ds2, main ='인구 추정', col=rainbow(3), beside=TRUE, legend.text = c('0~14세', '15~64세', '65세 이상'))  
+
+## 컬러종류 모를때!
+- colors()
+
+## 히스토그램
+- 외관상 막대그래프와 비슷한 그래프로, 그룹이 명시적으로 존재하지 않는 수치형 자료의 분포를 시각화할 때 사용한다.
+- R에서는 hist()함수를 이용하여 히스토그램을 작성한다.
+- ex)
+- head(cars)  
+dist <- cars[,2]  
+dist  
+hist(dist, main='Histogram for 제동거리', xlab='제동거리', ylab='빈도 수', border='blue', col='green', las=2, breaks=5)  
+
+## 히스토그램과 막대그래프 차이
+- 외관상 유사하지만 일반적으로 막대 사이에 간격이 있으면 막대그래프, 간격이 없이 막대들이 붙어 있으면 히스토그램이라고 구분할 수 있다. 
+- 막대그래프에서는 막대의 면적이 의미가 없지만 히스토그램에서는 막대의 면적이 의미가 있다.
+
+## 화면 분할 및 다중 그래프
+- ex)
+- par(mfrow=c(2,2), mar=c(3,3,4,2))  
+hist(iris$Sepal.Length, main = 'sepal.Length', col='orange')  
+barplot(table(mtcars$cy1), main='mtcars', col=c('red','green','blue'))  
+barplot(table(mtcars$gear), main='mtcars',col=rainbow(3),horiz=TRUE)  
+pie(table(mtcars$gear),main='mtcars',col=topo.colors(3),radius=2)  
+- export를 통해 Image와 pdf를 생성할 수 있다.
+
+## 선 그래프
+- ex)
+- month <- 1:12  
+late <- c(5,7,6,5,4,3,2,1,2,3,12,13)  
+plot(month, late, main='지각생 통계', type ='1', lty = 1, lwd = 1, xlab='Month', ylab ='Late cnt')
+
+---
 ## 내용 정리(23.04.13)
 
 ## 파일 입출력에서 알아야 할 내용
