@@ -1,5 +1,55 @@
 # 김진원
 
+## 내용 정리(23.05.04)
+
+## 복수 선그래프
+- ex)  
+- month <- 1:12  
+late <- c(5,7,6,5,4,3,2,1,2,3,12,13)  
+late2 <- c(4,6,5,7,8,10,2,8,4,12,3,10)  
+plot(month, late, main='지각생 통계', type ='l', lty = 1, col='red', lwd = 1, xlab='Month', ylab ='Late cnt')  
+lines(month, late2, type='b', col='blue')  
+
+## 상자그림
+- 사분위수를 시각화하여 그래프 형태로 나타낸 것
+- 하나의 그래프로 데이터의 분포 등 다양한 정보 전달하여 단일변수 수치형 자료를 파악하는 데 자주 사용한다.!
+- ex)
+- dist <- cars[,2]  
+boxplot(dist, main='자동차 제동거리')  
+
+## 그룹이 있는 데이터의 상자그림
+- ex)
+- boxplot(Petal.Length~Species, data=iris, main='품종별 꽃잎의 길이', col=c('green','yellow','red'))  
+
+## 산점도
+- 다중변수 데이터에서 두 변수에 포함된 값들을 2차원 그래프상에 점으로 표현하여 분포를 관찰할 수 있도록 하는 도구!
+- ex)
+- wt <- mtcars$wt  
+mpg <- mtcars$mpg  
+plot(wt, mpg, main='중량 연비 그래프', xlab='중량', ylab='연비', col='red', pch=19)  
+- vars <- c('mpg', 'disp', 'drat', 'wt')  
+target <- mtcars[,vars]  
+head(target)  
+plot(target, main ='Multi plots')  
+
+## 그룹 정보가 있는 2개 변수의 산점도
+- ex)
+- iris.2 <- iris[,3:4]  
+levels(iris$Species)  
+group <- as.numeric(iris$Species)  
+color <- c('red', 'green', 'blue')  
+plot(iris.2, main = 'iris plot', pch=c(group), col=color[group])  
+legend(x='bottomright', legend=levels(iris$Species), col=c('red','green','blue'), pch=(c(1:3)))  
+
+## 데이터 분석의 절차
+1. 문제 정의 / 계획
+2. 데이터 수집
+3. 데이터 정제/전처리
+4. 데이터 탐색
+5. 데이터 분석
+6. 결과 보고
+
+---
 ## 내용 정리(23.04.27)
 
 ## 시험 관련은 체점이 완료되는 주에 문제풀이 및 확인!!
@@ -53,7 +103,7 @@ pie(table(mtcars$gear),main='mtcars',col=topo.colors(3),radius=2)
 - ex)
 - month <- 1:12  
 late <- c(5,7,6,5,4,3,2,1,2,3,12,13)  
-plot(month, late, main='지각생 통계', type ='1', lty = 1, lwd = 1, xlab='Month', ylab ='Late cnt')
+plot(month, late, main='지각생 통계', type ='l', lty = 1, lwd = 1, xlab='Month', ylab ='Late cnt')
 
 ---
 ## 내용 정리(23.04.13)
