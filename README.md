@@ -2,6 +2,84 @@
 
 ## 내용 정리(23.05.11)
 
+## 정렬
+- ex)
+- 1 <- c(1, 7, 6, 8, 4, 2, 3)  
+v1 <- sort(v1) # 오름차순  
+v1  
+v2 <- sort(v1, decreasing = T) # 내림차순  
+v2  
+- ex)
+- name <- c('김진원', '최호용', '최수민', '김영준', '최찬일', '김도현')  
+sort(name) # 오름차순  
+sort(name, decreasing = T) # 내림차순  
+order(name)  
+order(name, decreasing = T)  
+sort(name, decreasing = T) # 내림차순  
+idx <- order(name)  
+name[idx]  
+- sort() 함수 : 값의 크기에 따라 값을들 정렬하는 함수
+- order() 함수 : 값의 크기에 따라 값들의 인덱스를 정렬하는 함수
+
+
+## 매트릭스와 데이터프레임의 정렬
+- 특정 열의 값들을 기준으로 행을 재배열하는 방법
+- iris 데이터셋에서 꽃잎의 길이(Sepal.Length)를 기준으로 행을 재정렬하는 예
+- ex)
+- head(iris)  
+order(iris$Sepal.Length)  
+iris[order(iris$Sepal.Length),]  
+iris[order(iris$Sepal.Length,decreasing = T),]  
+iris.new <- iris[order(iris$Sepal.Length),] #정렬된 데이터를 저장    
+head(iris.new)  
+
+## 샘플링
+- 샘플링 : 주어진 값들에서 임의의 개수만큼 값을 추출하는 작업
+- 여러 번 값을 추출할때,
+- 한 번 뽑은 값은 제외앟ㄴ 뒤 새로운 값을 추출하는 방식 -> 비복원 추출
+- 뽑았던 값을 다시 포함시켜 새로운 값을 추출하는 방식 -> 복원 추출
+- 샘플링이 필요할 때 : 데이터셋이 너무 커 분석에 시간이 많이 걸리는 경우, 일부의 데이터만 추출하여 대략의 결과를 미리 확인
+- ex)
+- x <- 1:100  
+y <- sample(x, size=10, replace = FALSE) # 비복원 추출  
+x <- 1:100  
+y <- sample(x, size=10, replace = T) # 복원 추출  
+- ex)
+- idx <- sample(1:nrow(iris), size = 50, replace=F)  
+iris.50 <- iris[idx,] # 50개의 행 추출  
+dim(iris.50) # 행과 열의 개수 확인  
+head(iris.50)  
+- 임의 추출을 하되 재현가능한 결과가 필요한 경우 : sample()함수 실행 직전에 set.seed()함수 사용한다.
+
+## 조합
+- 조합 : 주어진 데이터값 중에서 몇 개씩 짝을 지어 추출하는 작업으로, combn()함수를 사용한다.
+- ex)
+- combn(1:5, 3)  
+x <- c('red', 'green', 'blue', 'black', 'white')  
+com <- combn(x,2)  
+for(i in 1:ncol(com)){  
+  cat(com[,i], '\n')  
+}  
+
+## 집계
+- 데이터의 그룹에 대해서 합계나 평균을 계산하는 작업
+- aggregate()함수 사용한다.!
+- ex)
+- agg <-aggregate(iris[,-5], by=list(iris$Species), FUN = sd)  
+agg  
+
+## 나무지도
+- 데이터 분석 과정에서 중요한 기술 중 하나, 데이터 시각화
+- 데이터가 저장하고 있는 정보나 의미를 보다 쉽게 파악할 수 있음
+- 시각화 결과로부터 중요한 영감을 얻기도 한다!
+- 사각 타일의 형태로 표현, 데이터의 정보를 타일의 크기와 색깔로 나타내며, treemap패키지 설치 후 사용한다.!
+
+
+
+
+---
+## 내용 정리(23.05.11)
+
 ## 두 변수의 상관관계
 - 다중변수 데이터는 변수들의 대별 분석보다 변수 간의 관계를 찾는 것이 더 중요하다.
 - ex) prossure 데이터셋을 이용한 예제
@@ -65,15 +143,6 @@ for(i in 1:ncol(x))
   this.na <- is.na(x[,i])  
   cat(colnames(x)[i], '\t', sum(this.na), '\n')  
 }  
-
-
-
-
-
-
-
-
-
 
 ---
 ## 내용 정리(23.05.04)
