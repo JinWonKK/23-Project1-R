@@ -1,5 +1,32 @@
 # 김진원
 
+## 내용 정리(23.05.25)
+
+## 방사형 차트
+- 레이더 차트나 거미줄 차트라고도 부르는데, 다중변수 데이터를 2차원 평면상에 시각화할 수 있는 몇 안되는 도구 중 하나로, fmsb패키지 설치가 필요하다.!
+- ex)
+- install.packages('fmsb')  
+library(fmsb)  
+score <- c(80,60,95,85,40) # 데이터 준비  
+max.score <- rep(100,5) # 100을 5회 반복  
+min.score <- rep(0,5) # 0 을 5회 반복  
+ds <- rbind(max.score, min.score, score)  
+ds <- data.frame(ds) # 매트릭스를 데이터프레임으로   
+colnames(ds) <- c('국어', '영어', '수학', '물리', '음악')  
+ds  
+radarchart(ds) # 방사형 차트  
+radarchart(ds, pcol='dark green', pfcol=rgb(0,1,0.5,0.5,0.5), plwd=3, cglcol='grey', cglty=1, cglwd=0.8, axistype=1,
+seg=4, axislabcol='grey', caxislabels= seq(0,100,25)) # 옵션 지정  
+
+## wordcloud 실습
+- install.packages('wordcloud')  
+library(wordcloud)  
+word <- c('진원', '호용', '수민', '영준', '찬일', '도현')  
+frequency <- c(851 ,222, 431, 234, 542, 111)  
+wordcloud(word, frequency, colors='blue')  
+
+
+---
 ## 내용 정리(23.05.18)
 
 ## 정렬
@@ -295,8 +322,6 @@ mymax <- function(x,y) {
  return(num.max)  
 }  
 
-
-
 ---
 
 ## 내용 정리(23.04.06)
@@ -416,7 +441,6 @@ ex)
 ## 벡터와 벡터의 연산
 길이가 같아야 하고, 값의 종류가 같아야 한다.
 
-
 ## 벡터에 적용 가능한 함수들
 1. sum() - 값들의 합
 2. mean() - 값들의 평균
@@ -435,9 +459,6 @@ ex)
 
 ## 매트릭스와 데이터 프레임은 2차원 자료를 저장하기 위한 대표적인 자료구조
 매트릭스는 2차원 테이블 형태의 자료구조.
-
-
-
 
 ---
 
